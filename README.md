@@ -10,7 +10,7 @@ If already has pygame in the python environment, can skip this step.
 `pip install pygame>`
 
 ### How to run
-`cd JBMonopoly  
+`cd JBMonopoly      
 python main.py`
 
 
