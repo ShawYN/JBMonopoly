@@ -13,4 +13,7 @@ If already has pygame in the python environment, this step can be skipped.
 `cd JBMonopoly`      
 `python main.py`
 
+### Executable file available!
+Simply download and run the .exe file
+
 
