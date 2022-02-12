@@ -100,7 +100,8 @@ class gameUI(object):
 				if event.type == pygame.QUIT:
 					sys.exit()
 
-			if event.type == pygame.MOUSEBUTTONDOWN:
+			'''if event.type == pygame.MOUSEBUTTONDOWN:
+				
 				if self.button1.isOver():
 					step = threading.Thread(target = self.dice.roll).start()
 					#step = self.dice.roll()
@@ -110,15 +111,26 @@ class gameUI(object):
 					#global move 
 					#move = True
 					#sys.exit()
-				time.sleep(0.5)
+
+				time.sleep(1)
 			global change
 
 			if move:
 				if not change:
 					self.player1.changeImg()
+					change = True'''
+			if event.type == pygame.MOUSEBUTTONDOWN:
+				global change
+				if self.button1.isOver() and not change:
+					step = threading.Thread(target=self.dice.roll).start()
+					self.player1.changeImg()
 					change = True
+				time.sleep(1)
+			if move:
+				#if not change:
+					#self.player1.changeImg()
+					#change = True
 
-				
 				self.player1.movePlayer(step, ticks, self.block)
 				self.text = self.font1.render(c.station_Name[totalstep%36], True, (255,255,255))
 				#self.text2 = self.font2.render(c.station_Description[totalstep], True, (255,255,255))
@@ -292,7 +304,7 @@ class player(pygame.sprite.Sprite):
 			change = False
 '''
 	def changeImg(self):
-		print(change)
+		print(change, move)
 		if move:
 			player.load(self,c.player_Anime2,self.frame_width,self.frame_height,pygame.math.Vector2(self.rect.x,self.rect.y),4)
 		else:
@@ -425,7 +437,7 @@ class dice(realMainMenu.penguin):
 		global totalstep
 		totalstep += self.step
 		print(self.step)
-		global move 
+		global move
 		move = True
 		#return random.randint(1,6)
 		return self.step
