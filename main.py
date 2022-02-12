@@ -2,11 +2,11 @@ import pygame
 from pygame.locals import *
 import sys
 import time
-import main_menu,game_UI,realMainMenu
+#import main_menu,game_UI,realMainMenu
+import game_UI, realMainMenu
 import os
 #os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (100,100)
 os.environ['SDL_VIDEO_CENTERED'] = '1'
-
 
 allgroup = pygame.sprite.LayeredUpdates()
 backgroundgroup = pygame.sprite.Group()

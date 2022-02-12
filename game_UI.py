@@ -2,8 +2,8 @@ import pygame
 from pygame.locals import *
 import sys
 import time
-import main_menu,realMainMenu
-from main_menu import Button, downButton
+import realMainMenu
+from realMainMenu import Button, downButton
 import random
 import constants as c
 import threading
@@ -50,10 +50,10 @@ class gameUI(object):
 		#self.screen.blit(self.text2,(810,250))
 
 	def setup(self,allgroup, backgroundgroup, playergroup, buttongroup):
-		#self.bg = main_menu.background(c.blank_Background, pygame.math.Vector2(0, 0), allgroup, backgroundgroup)
-		self.map = main_menu.background(c.gaming_Map, pygame.math.Vector2(0, 0), allgroup, backgroundgroup)
-		#self.logo = main_menu.background(c.gaming_UI_Logo, pygame.math.Vector2(260, 160), allgroup, backgroundgroup)
-		#self.playerProfile = main_menu.background(c.player_Profile, pygame.math.Vector2(1030, 0), allgroup, backgroundgroup)
+		#self.bg = realMainMenu.background(c.blank_Background, pygame.math.Vector2(0, 0), allgroup, backgroundgroup)
+		self.map = realMainMenu.background(c.gaming_Map, pygame.math.Vector2(0, 0), allgroup, backgroundgroup)
+		#self.logo = realMainMenu.background(c.gaming_UI_Logo, pygame.math.Vector2(260, 160), allgroup, backgroundgroup)
+		#self.playerProfile = realMainMenu.background(c.player_Profile, pygame.math.Vector2(1030, 0), allgroup, backgroundgroup)
 
 		i = 0
 		self.block = [None for i in range(36)] 
@@ -73,10 +73,10 @@ class gameUI(object):
 		self.player1 = player(self.screen, allgroup, playergroup)
 		self.player1.load(c.player_Anime1,64,64,pygame.math.Vector2(640,595), 2)
 
-		self.button1 = main_menu.Button(c.start_Button_Up, pygame.math.Vector2(790, 606), 2, allgroup, buttongroup)
-		self.downButton1 = main_menu.downButton(c.start_Button_Down, pygame.math.Vector2(790, 608), -2, allgroup, buttongroup)
-		self.button2 = main_menu.Button(c.setting_Button_Up, pygame.math.Vector2(1177,605), 2, allgroup, buttongroup)
-		self.downButton2 = main_menu.downButton(c.setting_Button_Down, pygame.math.Vector2(1177,605), -2, allgroup, buttongroup)
+		self.button1 = realMainMenu.Button(c.start_Button_Up, pygame.math.Vector2(790, 606), 2, allgroup, buttongroup)
+		self.downButton1 = realMainMenu.downButton(c.start_Button_Down, pygame.math.Vector2(790, 608), -2, allgroup, buttongroup)
+		self.button2 = realMainMenu.Button(c.setting_Button_Up, pygame.math.Vector2(1177,605), 2, allgroup, buttongroup)
+		self.downButton2 = realMainMenu.downButton(c.setting_Button_Down, pygame.math.Vector2(1177,605), -2, allgroup, buttongroup)
 		
 		
 		self.dice = dice(self.screen, allgroup, playergroup)
