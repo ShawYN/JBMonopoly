@@ -8,6 +8,7 @@ import random
 import constants as c
 import threading
 
+clickdown = False
 move = False
 change = False
 totalstep = 0
@@ -99,7 +100,7 @@ class gameUI(object):
 			for event in pygame.event.get():
 				if event.type == pygame.QUIT:
 					sys.exit()
-
+			#print(pygame.mouse.get_pressed(num_buttons=3)[0])
 			'''if event.type == pygame.MOUSEBUTTONDOWN:
 				
 				if self.button1.isOver():
@@ -119,23 +120,41 @@ class gameUI(object):
 				if not change:
 					self.player1.changeImg()
 					change = True'''
-			if event.type == pygame.MOUSEBUTTONDOWN:
+			'''if event.type == pygame.MOUSEBUTTONDOWN:
 				global change
 				if self.button1.isOver() and not change:
 					step = threading.Thread(target=self.dice.roll).start()
-					self.player1.changeImg()
-					change = True
+					#self.player1.changeImg()
+					#change = True
 				time.sleep(1)
-			if move:
+			if move and change:
 				#if not change:
 					#self.player1.changeImg()
 					#change = True
-
+				self.player1.changeImg()
 				self.player1.movePlayer(step, ticks, self.block)
 				self.text = self.font1.render(c.station_Name[totalstep%36], True, (255,255,255))
 				#self.text2 = self.font2.render(c.station_Description[totalstep], True, (255,255,255))
 		
-				#print("tot",totalstep)
+				#print("tot",totalstep)'''
+
+			if pygame.mouse.get_pressed(num_buttons = 3)[0] and self.button1.isOver():
+				global clickdown
+				clickdown = True
+			if clickdown and not pygame.mouse.get_pressed(num_buttons = 3)[0]:
+				global change
+				#if not change and not pygame.mouse.get_pressed(num_buttons = 3)[0]:
+				if not change:
+					clickdown = False
+					step = threading.Thread(target=self.dice.roll).start()
+				time.sleep(0.5)
+			if move:
+				#if not change:
+					#self.player1.changeImg()
+					#change = True
+				self.player1.changeImg()
+				self.player1.movePlayer(step, ticks, self.block)
+				self.text = self.font1.render(c.station_Name[totalstep%36], True, (255,255,255))
 
 			allgroup.update(ticks,allgroup)
 			allgroup.draw(self.screen)
@@ -304,7 +323,7 @@ class player(pygame.sprite.Sprite):
 			change = False
 '''
 	def changeImg(self):
-		print(change, move)
+		#print(change, move)
 		if move:
 			player.load(self,c.player_Anime2,self.frame_width,self.frame_height,pygame.math.Vector2(self.rect.x,self.rect.y),4)
 		else:
@@ -437,8 +456,11 @@ class dice(realMainMenu.penguin):
 		global totalstep
 		totalstep += self.step
 		print(self.step)
+		global change
+		change = True
 		global move
 		move = True
+
 		#return random.randint(1,6)
 		return self.step
 
