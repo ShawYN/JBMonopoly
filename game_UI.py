@@ -5,7 +5,7 @@ import time
 import realMainMenu
 from realMainMenu import Button, downButton
 import random
-import constants as c
+from DataTools import constants as c
 import threading
 
 move = False

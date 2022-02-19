@@ -2,7 +2,7 @@ import pygame
 from pygame.locals import *
 import sys
 import time
-import constants as c
+from DataTools import constants as c
 '''
 upImageFilename1 = 'Resources/graphics/Main_Mune_buttom/Play_Unselected14050.png'
 downImageFilename1 = 'Resources/graphics/Main_Mune_buttom/Play_selected14050.png'
