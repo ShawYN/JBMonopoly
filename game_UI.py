@@ -32,6 +32,7 @@ def blit_text(surface, text, pos, font, color = (255,255,255)):
 
 class gameUI(object):
 	def __init__(self, allgroup):
+		self.map = None
 		pygame.init()
 		pygame.mixer.init()
 		self.screen = pygame.display.set_mode((1280, 720))
